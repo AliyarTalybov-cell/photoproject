@@ -5,11 +5,8 @@
  * Studio name, galleries, pricing, and copy all live here. Edit this file and
  * the whole portfolio re-themes.
  *
- * ABOUT THE IMAGES: this template ships with ZERO image files. Every "photo" is
- * a deterministic CSS gradient drawn by components/Frame.tsx, so the repo stays
- * tiny, loads instantly, and contains nothing you need a license for.
- * When you have real photography, see the "Using real photos" section of the
- * README — it is a two-line change per image.
+ * Фотографии для портфолио собраны из бесплатной коллекции Pixabay и хранятся
+ * локально в public/images/weddings, чтобы сайт загружался стабильно и быстро.
  */
 
 export const siteConfig = {
@@ -46,8 +43,8 @@ export const siteConfig = {
    * Galleries. Each becomes a filterable collection on the homepage and opens
    * in the lightbox.
    *
-   * `shots` is just a count — Frame.tsx generates a distinct gradient per
-   * (gallery, index) pair. Replace with real image paths when you have them.
+   * `shots` задаёт количество кадров, а Frame.tsx подбирает фотографии из
+   * локальной свадебной коллекции.
    *
    * `ratio` controls the grid: "portrait" | "landscape" | "square".
    */

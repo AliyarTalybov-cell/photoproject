@@ -1,22 +1,4 @@
-/**
- * Frame — a stand-in "photograph".
- *
- * This template ships with zero image files, so the repo is tiny and there is
- * nothing to license. Each frame renders a deterministic gradient derived from
- * its gallery slug and index, so the layout looks like a real, varied portfolio
- * and stays identical between builds.
- *
- * ── USING REAL PHOTOS ──────────────────────────────────────────────────────
- * Replace the <div> below with next/image and pass a src through:
- *
- *   import Image from "next/image";
- *   <Image src={src} alt={alt} fill sizes="(max-width:768px) 100vw, 33vw"
- *          className="object-cover" />
- *
- * Keep the wrapper and its aspect ratio classes — the masonry grid depends on
- * them. Add `loading="lazy"` (next/image does this by default) so a gallery of
- * 60 photographs still loads fast.
- */
+import Image from "next/image";
 
 const RATIO_CLASS: Record<string, string> = {
   portrait: "aspect-[4/5]",
@@ -24,7 +6,15 @@ const RATIO_CLASS: Record<string, string> = {
   square: "aspect-square",
 };
 
-/** Cheap deterministic hash so a given (seed, index) always yields one look. */
+const WEDDING_PHOTOS = [
+  { src: "/images/weddings/sunset-couple.jpg", alt: "Пара на берегу на закате" },
+  { src: "/images/weddings/newlyweds-sunset.jpg", alt: "Молодожёны в тёплом вечернем свете" },
+  { src: "/images/weddings/bridal-bouquet.jpg", alt: "Свадебный букет" },
+  { src: "/images/weddings/wedding-toast.jpg", alt: "Свадебный тост" },
+  { src: "/images/weddings/rings-bouquet.jpg", alt: "Обручальные кольца в букете" },
+  { src: "/images/weddings/hands-rings.jpg", alt: "Руки молодожёнов с кольцами" },
+] as const;
+
 function hash(seed: string, i: number): number {
   let h = 2166136261;
   const s = `${seed}-${i}`;
@@ -46,42 +36,25 @@ export default function Frame({
   index: number;
   ratio?: string;
   className?: string;
-  /** Real alt text once you swap in real photos. */
   alt?: string;
 }) {
-  const h = hash(seed, index);
-  // Warm, filmic hues — amber through rose to deep indigo.
-  const hue = h % 360;
-  const hue2 = (hue + 35 + (h % 40)) % 360;
-  const angle = h % 180;
-  const light1 = 58 + (h % 18);
-  const light2 = 22 + (h % 20);
+  const photo = WEDDING_PHOTOS[hash(seed, index) % WEDDING_PHOTOS.length];
 
   return (
     <div
       className={`relative overflow-hidden rounded-sm ${RATIO_CLASS[ratio] ?? RATIO_CLASS.portrait} ${className}`}
-      role={alt ? "img" : undefined}
-      aria-label={alt}
-      style={{
-        backgroundImage: `
-          linear-gradient(${angle}deg,
-            hsl(${hue} 45% ${light1}%) 0%,
-            hsl(${hue2} 38% ${light2}%) 100%),
-          radial-gradient(at ${30 + (h % 40)}% ${20 + (h % 50)}%,
-            hsl(${(hue + 180) % 360} 60% 70% / 0.35) 0px, transparent 60%)
-        `,
-        backgroundBlendMode: "overlay",
-      }}
+      role="img"
+      aria-label={alt ?? photo.alt}
     >
-      {/* film-grain-ish sheen, drawn not loaded */}
-      <div
-        className="absolute inset-0 opacity-[0.18] mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, rgba(255,255,255,.6) 0 1px, transparent 1px 3px)",
-        }}
-        aria-hidden="true"
+      <Image
+        src={photo.src}
+        alt={alt ?? photo.alt}
+        fill
+        sizes="(max-width: 768px) 100vw, 33vw"
+        className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+        priority={seed === "hero"}
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/5" aria-hidden="true" />
     </div>
   );
 }
