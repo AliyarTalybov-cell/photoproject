@@ -37,21 +37,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-6 flex max-w-6xl flex-col justify-between gap-2 text-xs opacity-50 sm:flex-row">
-        <span>
-          © {year} {siteConfig.name}. Все права защищены.
-        </span>
-        <span>
-          {siteConfig.footerNote}{" "}
-          <a
-            href={siteConfig.footerCredit.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2"
-          >
-            {siteConfig.footerCredit.label}
-          </a>
-        </span>
+      <div className="mx-auto mt-6 max-w-6xl text-xs opacity-50">
+        © {year} {siteConfig.name}. Все права защищены.
       </div>
     </footer>
   );

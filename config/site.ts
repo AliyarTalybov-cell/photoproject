@@ -162,11 +162,6 @@ export const siteConfig = {
     placeholder: "например, orlova-2026",
   },
 
-  footerNote: "Сайт создан на основе шаблона Lumen от",
-  footerCredit: {
-    label: "Pixel & Oak",
-    href: "https://pixelandoak.com/templates/photography-portfolio-website-template/?utm_source=lumen-template",
-  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;
