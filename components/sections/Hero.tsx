@@ -6,7 +6,7 @@ export default function Hero() {
   const { hero } = siteConfig;
 
   return (
-    <section className="relative mx-auto max-w-[1400px] px-5 pb-20 pt-10 sm:pb-28 sm:pt-16">
+    <section className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:pb-24 sm:pt-20">
       <Reveal>
         <span className="text-xs font-semibold uppercase tracking-[0.2em] opacity-50">
           {hero.eyebrow}
@@ -19,10 +19,10 @@ export default function Hero() {
         </h1>
       </Reveal>
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+      <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-end">
         <Reveal delay={150}>
           <div>
-            <p className="max-w-sm text-base leading-relaxed opacity-70">{hero.sub}</p>
+            <p className="max-w-md leading-relaxed opacity-70">{hero.sub}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#contact"
@@ -40,14 +40,12 @@ export default function Hero() {
           </div>
         </Reveal>
 
-        {/* Большой журнальный кадр в духе travel-портфолио. */}
+        {/* Editorial three-up. Replace Frame with next/image when you have photos. */}
         <Reveal delay={220}>
-          <div className="relative">
-            <Frame seed="hero" index={0} ratio="landscape" className="min-h-[420px] sm:min-h-[560px]" />
-            <div className="pointer-events-none absolute inset-x-5 bottom-5 flex items-end justify-between text-white sm:inset-x-8 sm:bottom-8">
-              <span className="text-[10px] uppercase tracking-[0.24em] text-white/75">Свадебные истории · Москва</span>
-              <span className="font-display text-2xl italic text-white/90">живой свет</span>
-            </div>
+          <div className="grid grid-cols-3 gap-3">
+            <Frame seed="hero" index={0} ratio="portrait" className="mt-10" />
+            <Frame seed="hero" index={1} ratio="portrait" />
+            <Frame seed="hero" index={2} ratio="portrait" className="mt-6" />
           </div>
         </Reveal>
       </div>
