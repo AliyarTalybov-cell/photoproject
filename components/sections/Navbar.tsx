@@ -37,9 +37,9 @@ export default function Navbar() {
           : ""
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 sm:px-8">
         <a href="/" className="leading-none" aria-label={`${siteConfig.name} — home`}>
-          <span className="block font-display text-2xl font-bold tracking-[0.2em]">
+          <span className="block font-display text-xl font-bold tracking-[0.2em]">
             {siteConfig.name.toUpperCase()}
           </span>
           <span className="mt-1 block text-[10px] uppercase tracking-[0.22em] opacity-50">
@@ -47,12 +47,12 @@ export default function Navbar() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium opacity-70 transition-opacity hover:opacity-100"
+              className="text-[11px] font-semibold uppercase tracking-[0.16em] opacity-65 transition-opacity hover:opacity-100"
             >
               {l.label}
             </a>

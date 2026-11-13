@@ -63,15 +63,15 @@ export default function Gallery() {
   const current = open === null ? null : visible[open];
 
   return (
-    <section id="work" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="work" className="bg-ink-900 py-20 text-ink-50 sm:py-28 dark:bg-ink-100 dark:text-ink-900">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.18em] opacity-50">
-              Избранные работы
+              Портфолио
             </span>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl">
-              Работы
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl">
+              Истории в кадре
             </h2>
           </div>
 
